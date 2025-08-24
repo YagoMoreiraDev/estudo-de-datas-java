@@ -1,7 +1,4 @@
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Exercicio {
@@ -36,8 +33,7 @@ public class Exercicio {
         LocalDateTime convertendoDataTimePadraBrParaISO = LocalDateTime.parse(dataPadraoBr2, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 
         //Instant no seu metodo .parse() não recebe um DateTimeFormatter
-        // Instant convertendoInstantPadraBrParaISO = Instant.parse(dataPadraoBr2, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-
+        //Instant convertendoInstantPadraBrParaISO = Instant.parse(dataPadraoBr2, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         System.out.println(convertendoDataPadraBrParaISO);
         System.out.println(convertendoDataTimePadraBrParaISO);
 
@@ -50,7 +46,23 @@ public class Exercicio {
         String localDateFormatado = dt8.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String localTimeFormatado = dt9.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         String localDateTimeFormatado = dt10.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-        //Instant intantFormatado = dt11.
-        //System.out.println();
+
+        //O Instant não tem o metodo .format(), o que eu vou ter que fazer é o seguinte:
+        //1- Criar uma variavel do tipo DateTimeFormatter
+        //2- Essa variavel vai receber o DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault())
+        //3- Essa variavel do tipo DateTimeFormatter agora pode chamar o metodo .format()
+        //4- e dentro desse metodo .format() eu passo como parametro a variavel do tipo Instant
+
+        //Forma mais rápida:DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault()).format(instanteData)
+        //Essa forma mais rápida eu já posso imprimir direito.
+
+        DateTimeFormatter formatadorDeInstant = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").withZone(ZoneId.systemDefault());
+
+        System.out.format("Usando a forma NÃO rápida: %s%n", formatadorDeInstant.format(dt11));
+        System.out.println("Usando a forma RÁPIDA: "+ DateTimeFormatter
+                .ofPattern("dd/MM/yyyy HH:mm:ss")
+                .withZone(ZoneId.systemDefault())
+                .format(dt11)
+        );
     }
 }
