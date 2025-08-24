@@ -1,29 +1,56 @@
-import java.sql.SQLOutput;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
 
 public class Exercicio {
     public static void main(String[] args) {
-        Instant data = Instant.parse("2018-06-25T15:42:07Z");
+        System.out.println("--------------- Instanciando uma data com o .parse() ---------------");
+        LocalDate dt1 = LocalDate.parse("2025-08-25");
+        LocalTime dt2 = LocalTime.parse("07:00:10");
+        LocalDateTime dt3 = LocalDateTime.parse("2025-08-25T07:00:10");
+        Instant dt4 = Instant.parse("2025-08-25T07:00:10Z");
 
-        System.out.println(data);
+        System.out.println(dt1);
+        System.out.println(dt2);
+        System.out.println(dt3);
+        System.out.println(dt4);
 
-        Date dataComDate = Date.from(data);
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(dataComDate);
-        cal.add(Calendar.YEAR, 2);
-        int hours = cal.get(Calendar.HOUR);
-        int minutos = cal.get(Calendar.MINUTE);
-        int mes = cal.get(Calendar.MONTH);
+        System.out.println("--------------- Instanciando uma data com o .of() ---------------");
+        //Instante não possui o .of()
+        LocalDate dt5 = LocalDate.of(2025, 8, 24);
+        LocalTime dt6 = LocalTime.of(7,0,0);
+        LocalDateTime dt7 = LocalDateTime.of(2025, 8, 24, 7, 0,0);
 
+        System.out.println(dt5);
+        System.out.println(dt6);
+        System.out.println(dt7);
 
-        dataComDate = cal.getTime();
-        System.out.println(dataComDate);
+        System.out.println("--------------- Recebendo Datas o padrão BR e exibindo no padrao ISO ---------------");
+
+        String dataPadraoBr1 = "20/07/2023";
+        String dataPadraoBr2 = "13/07/2023 18:30:45";
+
+        LocalDate convertendoDataPadraBrParaISO = LocalDate.parse(dataPadraoBr1, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDateTime convertendoDataTimePadraBrParaISO = LocalDateTime.parse(dataPadraoBr2, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+
+        //Instant no seu metodo .parse() não recebe um DateTimeFormatter
+        // Instant convertendoInstantPadraBrParaISO = Instant.parse(dataPadraoBr2, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+
+        System.out.println(convertendoDataPadraBrParaISO);
+        System.out.println(convertendoDataTimePadraBrParaISO);
+
+        System.out.println("--------------- Formatandos Datas para o padrão BR ---------------");
+        LocalDate dt8 = LocalDate.now();
+        LocalTime dt9 = LocalTime.now();
+        LocalDateTime dt10 = LocalDateTime.now();
+        Instant dt11 = Instant.now();
+
+        String localDateFormatado = dt8.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String localTimeFormatado = dt9.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        String localDateTimeFormatado = dt10.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+        //Instant intantFormatado = dt11.
+        //System.out.println();
     }
 }

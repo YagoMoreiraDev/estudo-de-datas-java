@@ -22,15 +22,13 @@ public class MainDurationPeriodChronoUnit {
         System.out.println("---------------------- FAZENDO OPERACOES COM DURATION E PERIOD ----------------------");
 
         LocalDate date3 = LocalDate.parse("2025-08-22");
-        LocalDate date4 = LocalDate.parse("2025-08-25");
+        LocalDate date4 = LocalDate.parse("2025-09-21");
 
         Period periodoPermanencia = Period.between(date3, date4);
 
         System.out.println(date3.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         System.out.println(date4.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         System.out.println("Periodo de permanencia de estadia foi de: "+periodoPermanencia.getDays());
-        System.out.println(tempoDecorrido.toDays());
-        System.out.println(tempoDecorridoEmAnos.getYears());
 
         System.out.println("---------------------- MELHOR FORMA DE CALCULAR PERMANENCIA EM DIAS COM CHRONOUNIT ----------------------");
 
