@@ -1,4 +1,4 @@
-package local_date.entities_localdate;
+package tipo_local_date.entities_localdate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

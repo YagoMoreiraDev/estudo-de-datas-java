@@ -1,4 +1,4 @@
-package instant_duration_period;
+package tipo_instant_duration_period;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;

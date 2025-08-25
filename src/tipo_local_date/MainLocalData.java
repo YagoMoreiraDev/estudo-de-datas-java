@@ -1,6 +1,6 @@
-package local_date;
+package tipo_local_date;
 
-import local_date.entities_localdate.Pessoa;
+import tipo_local_date.entities_localdate.Pessoa;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

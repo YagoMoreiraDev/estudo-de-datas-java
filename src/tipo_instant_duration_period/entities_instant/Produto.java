@@ -1,4 +1,4 @@
-package instant_duration_period.entities_instant;
+package tipo_instant_duration_period.entities_instant;
 
 import java.time.Instant;
 
